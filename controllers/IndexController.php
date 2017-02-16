@@ -15,6 +15,15 @@ class CollectionTree_IndexController extends Omeka_Controller_AbstractActionCont
 {
     public function indexAction()
     {
-        $this->view->full_collection_tree = $this->view->collectionTreeFullList();
+        $rootCollections = get_db()->getTable('CollectionTree')->getRootCollections();
+        $this->view->rootCollections = $rootCollections;
+    }
+
+    public function collectionChildrenListAction()
+    {
+        $collectionId = $this->getRequest()->getParam('id');
+
+        $children = get_db()->getTable('CollectionTree')->getChildCollections($collectionId);
+        $this->view->children = $children;
     }
 }

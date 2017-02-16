@@ -1,0 +1,20 @@
+#collection-tree li {
+    list-style-type: none;
+}
+
+.collection-tree-handle::after {
+    font-family: FontAwesome;
+    content: '\f096';
+}
+
+#collection-tree li.collapsible > .collection-tree-handle {
+    cursor: pointer;
+}
+
+#collection-tree li.collapsed > .collection-tree-handle::after {
+    content: '\f196';
+}
+
+#collection-tree li.expanded > .collection-tree-handle::after {
+    content: '\f147';
+}
